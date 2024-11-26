@@ -8,14 +8,21 @@ runConfig:
   # memoryMiB: 512
 
 # Environment variables and secrets.
-# env:
-  # Configure environment variables.
-  # See https://firebase.google.com/docs/app-hosting/configure#user-defined-environment
-  # - variable: MESSAGE
-  #   value: Hello world!
-  #   availability:
-  #     - BUILD
-  #     - RUNTIME
+env:
+  - variable: FB_API_KEY
+    value: AIzaSyDy3s4vmR4FCp202VvdpI5v8imDCNnkCg8
+  - variable: FB_AUTH_DOMAIN
+    value: costamar-b6fec.firebaseapp.com
+  - variable: FB_PROJECT_ID
+    value: costamar-b6fec
+  - variable: FB_STORAGE_BUCKET
+    value: costamar-b6fec.firebasestorage.app
+  - variable: FB_MESSAGING_SENDER_ID
+    value: 826554585190
+  - variable: FB_APP_ID
+    value: 1:826554585190:web:d1f3708b435e1245499da7
+  - variable: FB_MEASUREMENT_ID
+    value: G-4RNHRW94PS
 
   # Grant access to secrets in Cloud Secret Manager.
   # See https://firebase.google.com/docs/app-hosting/configure#secret-parameters
