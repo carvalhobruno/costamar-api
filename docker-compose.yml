@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  costa-db:
+    image: postgres
+    # volumes:
+    # - ./01-file.sql:/docker-entrypoint-initdb.d/01-file.sql
+    # - ./02-file.sql:/docker-entrypoint-initdb.d/02-file.sql
+    environment:
+      POSTGRES_USER: 'bruno'
+
+      POSTGRES_PASSWORD: 'Postgres2022'
+    ports:
+      - '5434:5432'
