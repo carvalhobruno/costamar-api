@@ -9,6 +9,10 @@ runConfig:
 
 # Environment variables and secrets.
 env:
+  - variable: NODE_ENV
+    value: production
+  - variable: PORT
+    value: 8080
   - variable: FB_API_KEY
     value: AIzaSyDy3s4vmR4FCp202VvdpI5v8imDCNnkCg8
   - variable: FB_AUTH_DOMAIN
