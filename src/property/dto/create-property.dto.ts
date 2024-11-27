@@ -23,5 +23,6 @@ export class CreatePropertyDto {
   aptoNumber?: number;
   carSpaces?: number;
   featuredImage?: string;
+  reportWritenAt: Date;
   images?: string[];
 }

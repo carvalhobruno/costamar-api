@@ -75,6 +75,9 @@ export class Property {
   @Column('text', { nullable: true, array: true })
   images?: string[];
 
+  @CreateDateColumn({ nullable: true })
+  reportWritenAt: Date;
+
   @CreateDateColumn()
   created_at: Date;
 

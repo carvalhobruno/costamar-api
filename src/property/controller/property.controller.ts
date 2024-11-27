@@ -31,19 +31,23 @@ export class PropertyController {
     return this.propertyService.findAll();
   }
 
+  @Public()
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.propertyService.findOne(id);
   }
 
+  @Public()
   @Patch(':id')
   update(
     @Param('id') id: string,
     @Body() updatePropertyDto: UpdatePropertyDto,
   ) {
+    console.log('updatePropertyDto', updatePropertyDto);
     return this.propertyService.update(id, updatePropertyDto);
   }
 
+  @Public()
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.propertyService.remove(id);
