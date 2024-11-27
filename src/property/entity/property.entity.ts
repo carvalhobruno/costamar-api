@@ -2,10 +2,15 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  ManyToOne,
-  JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
-import { NeighborhoodEnum } from '../../neighborhood/entity/neighborhood.entity';
+import {
+  NeighborhoodEnum,
+  HouseDetailsEnum,
+  CondoDetailsEnum,
+  ApartmentDetailsEnum,
+} from '../../neighborhood/entity/neighborhood.entity';
 
 export enum PropertyConditionEnum {
   NOVO = 'Novo',
@@ -26,7 +31,7 @@ export class Property {
   name: string;
 
   @Column({ nullable: true })
-  details?: string;
+  details?: HouseDetailsEnum | CondoDetailsEnum | ApartmentDetailsEnum;
 
   @Column()
   address: string;
@@ -52,9 +57,6 @@ export class Property {
   @Column({ nullable: true })
   reportValue?: number;
 
-  @Column({ nullable: true })
-  entry?: number;
-
   @Column()
   type: string;
 
@@ -65,11 +67,17 @@ export class Property {
   carSpaces?: number;
 
   @Column({ nullable: true })
-  aptoQuantity?: number;
+  aptoNumber?: number;
 
   @Column({ nullable: true })
   featuredImage?: string;
 
   @Column('text', { nullable: true, array: true })
   images?: string[];
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
 }
