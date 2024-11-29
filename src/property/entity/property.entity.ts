@@ -76,7 +76,7 @@ export class Property {
   images?: string[];
 
   @CreateDateColumn({ nullable: true })
-  reportWritenAt: Date;
+  reportWrittenAt: Date;
 
   @CreateDateColumn()
   created_at: Date;

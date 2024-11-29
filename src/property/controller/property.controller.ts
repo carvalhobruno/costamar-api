@@ -11,7 +11,6 @@ import { PropertyService } from '../service/property.service';
 import { CreatePropertyDto } from '../dto/create-property.dto';
 import { UpdatePropertyDto } from '../dto/update-property.dto';
 import { UseInterceptors, UploadedFile } from '@nestjs/common';
-import { Multer } from 'multer';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Public } from 'src/auth/decorators/public.decorator';
 
@@ -21,8 +20,17 @@ export class PropertyController {
 
   @Public()
   @Post()
-  create(@Body() createPropertyDto: CreatePropertyDto) {
-    return this.propertyService.create(createPropertyDto);
+  @UseInterceptors(FileInterceptor('file'))
+  create(
+    @UploadedFile() file: Express.Multer.File,
+    @Body() createPropertyDto: CreatePropertyDto,
+  ) {
+    console.log('createPropertyDto', createPropertyDto);
+
+    return this.propertyService.createWithImg(
+      CreatePropertyDto.convertFromDataForm(createPropertyDto),
+      file,
+    );
   }
 
   @Public()
@@ -43,7 +51,6 @@ export class PropertyController {
     @Param('id') id: string,
     @Body() updatePropertyDto: UpdatePropertyDto,
   ) {
-    console.log('updatePropertyDto', updatePropertyDto);
     return this.propertyService.update(id, updatePropertyDto);
   }
 
@@ -60,6 +67,7 @@ export class PropertyController {
   uploadFeaturedImage(
     @Param('id') id: string,
     @UploadedFile() file: Express.Multer.File,
+    @Body() body: any,
   ) {
     return this.propertyService.uploadFeaturedImage(id, file);
   }
